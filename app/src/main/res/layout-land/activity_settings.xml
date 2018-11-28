@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.SettingsActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <RelativeLayout
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
+
+        <!-- Dark Mode Toggle or Switch by default light mode -->
+        <Switch
+            android:id="@+id/checkbox_screen_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/screen_mode"
+            android:gravity="left"
+            android:checked="true"
+            android:switchMinWidth="60dp"
+            android:textSize="@dimen/settings_text_large"/>
+
+        <!-- Password Lock Checkbox, if selected show a dialog to set password -->
+
+        <!-- backup notes checkbox, if selected show manual or auto radio btns, if manual show options email or drive,
+                if auto make them save email-->
+
+
+
+
+
+    </RelativeLayout>
+
+    <!--<include layout="@layout/content_settings" />-->
+
+</RelativeLayout>

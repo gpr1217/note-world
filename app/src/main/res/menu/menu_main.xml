@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".views.NotesActivity">
+
+    <item
+        android:id="@+id/action_search"
+        android:title="@string/menu_search_title"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:icon="@android:drawable/ic_menu_search"
+        app:actionViewClass="android.support.v7.widget.SearchView"/>
+
+    <item
+        android:id="@+id/action_save"
+        android:title="Save"
+        app:showAsAction="ifRoom"
+        android:visible="false"
+        android:icon="@drawable/baseline_done_white_36dp"
+        />
+
+    <item
+        android:id="@+id/action_empty"
+        android:title="Options"
+        android:orderInCategory="101"
+        app:showAsAction="always"
+        android:icon="@drawable/baseline_more_vert_white_36dp">
+        <menu>
+            <item android:id="@+id/action_settings"
+                android:icon="@android:drawable/ic_menu_preferences"
+                app:showAsAction="ifRoom"
+                android:title="Settings" />
+
+            <item android:id="@+id/action_about"
+                android:icon="@android:drawable/ic_menu_help"
+                app:showAsAction="ifRoom"
+                android:title="About" />
+        </menu>
+    </item>
+
+  <!--  <item
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        app:showAsAction="ifRoom"
+        android:icon="@android:drawable/" />
+-->
+</menu>

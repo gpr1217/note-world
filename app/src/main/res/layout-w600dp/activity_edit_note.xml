@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.EditNoteActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <EditText
+        android:id="@+id/edit_note"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:imeOptions="flagNoExtractUi"
+        android:inputType="text|textCapSentences|textMultiLine"
+        android:scrollbars="vertical"
+        android:background="@null"
+        android:textIsSelectable="true"
+        android:gravity="top"
+        android:padding="@dimen/padding_edittext"
+        android:layout_below="@+id/toolbar"
+        />
+
+
+</RelativeLayout>

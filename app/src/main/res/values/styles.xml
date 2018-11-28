@@ -1,0 +1,67 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+
+        <!--   color for the app bar and other primary UI elements -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+        <!--   a darker variant of the primary color, used for
+           the status bar (on Android 5.0+) and contextual app bars -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+        <!--   a secondary color for controls like checkboxes and text fields -->
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimaryModeDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkModeDark</item>
+        <item name="colorAccent">@color/colorAccentModeDark</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Recycler Row Font Styles -->
+    <style name="NoteRowStyles">
+        <item name="android:textSize">@dimen/row_note_text_size</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="NoteTimeStampStyles">
+        <item name="android:textSize">@dimen/row_note_time_size</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
+    <!-- Toolbar styles -->
+    <style name="ToolBarStyles">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorBg</item>
+    </style>
+
+    <!-- Toolbar Dark styles -->
+    <style name="ToolBarStyles.Dark">
+        <item name="android:windowBackground">@color/colorPrimaryModeDark</item>
+        <item name="android:textColor">@color/colorBg</item>
+    </style>
+
+    <!--&lt;!&ndash; Activity Light Background Styles &ndash;&gt;
+    <style name="ActivityBg.Light">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorBg</item>
+    </style>
+
+    &lt;!&ndash; Activity Dark Background Styles &ndash;&gt;
+    <style name="ActivityBg.Dark">
+        <item name="android:windowBackground">@color/colorBgDark</item>
+        <item name="android:textColor">@color/colorTextDark</item>
+    </style>-->
+
+</resources>
