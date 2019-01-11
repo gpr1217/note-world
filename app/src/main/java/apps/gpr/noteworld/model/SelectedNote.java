@@ -1,6 +1,6 @@
 package apps.gpr.noteworld.model;
 
-public class SelectedNote {
+class SelectedNote {
 
     private int id;
     private String editedNote;

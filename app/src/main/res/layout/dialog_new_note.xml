@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="30dp">
 
     <TextView
         android:id="@+id/dialog_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Note"
+        android:text="@string/str_add_note"
         android:textSize="@dimen/large_loading"
-        android:textColor="@color/colorPrimary"
+        android:textColor="?themePrimary"
         android:textStyle="bold"
         android:layout_marginBottom="10dp"
         />
+
     <EditText
         android:id="@+id/new_note"
         android:layout_width="match_parent"
@@ -20,7 +22,7 @@
         android:paddingRight="5dp"
         android:layout_below="@+id/dialog_title"
         android:inputType="textCapCharacters|textCapSentences|textMultiLine"
-        android:hint="Add Note"/>
+        android:hint="@string/str_add_note" />
 
     <LinearLayout
         android:layout_below="@+id/new_note"
@@ -29,18 +31,22 @@
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_cancel"
+            style="@style/Button.Styles"/>
+
             <Button
                 android:id="@+id/btn_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Save"
+                android:text="@string/str_save"
+                style="@style/Button.Styles"
                 />
 
-            <Button
-                android:id="@+id/btn_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cancel"/>
+
     </LinearLayout>
 
 </RelativeLayout>

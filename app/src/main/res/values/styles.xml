@@ -2,32 +2,439 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        <!-- Customize your theme here around 500 from color palette-->
         <item name="windowNoTitle">true</item>
 
-        <!--   color for the app bar and other primary UI elements -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- used for Toolbar color -->
+        <item name="colorPrimary">?themePrimary</item>
 
-        <!--   a darker variant of the primary color, used for
-           the status bar (on Android 5.0+) and contextual app bars -->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- used for status bar color darker than primary around 700 from color palette-->
+        <item name="colorPrimaryDark">?themePrimaryDark</item>
 
-        <!--   a secondary color for controls like checkboxes and text fields -->
-        <item name="colorAccent">@color/colorAccent</item>
+        <!-- used for all other widgets like button, radio, switch, tabs and etc -->
+        <item name="colorAccent">?themeAccent</item>
+       <!-- <item name="android:background">?themeContentBackground</item>
+        <item name="android:textColor">?themePrimary</item>-->
 
     </style>
 
-    <style name="AppTheme.Dark" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here around 500 from color palette-->
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/colorPrimaryModeDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkModeDark</item>
-        <item name="colorAccent">@color/colorAccentModeDark</item>
+
+        <!-- used for Toolbar color -->
+        <item name="colorPrimary">?themePrimary</item>
+
+        <!-- used for status bar color darker than primary around 700 from color palette-->
+        <item name="colorPrimaryDark">?themePrimaryDark</item>
+
+        <!-- used for all other widgets like button, radio, switch, tabs and etc -->
+        <item name="colorAccent">?themeAccent</item>
+        <!-- <item name="android:background">?themeContentBackground</item>
+         <item name="android:textColor">?themePrimary</item>-->
+
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.Black">
+        <item name="themePrimary">@color/colorBlack</item>
+        <item name="themePrimaryDark">@color/colorBlackTop</item>
+        <item name="themeAccent">@color/colorBlack</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorBlack</item>
+        <item name="android:colorControlHighlight">@color/colorBlackTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.Black.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorBlack</item>
+        <item name="themePrimaryDark">@color/colorBlackTop</item>
+        <item name="themeAccent">@color/colorBlack</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorWhite</item>
+        <item name="android:colorControlHighlight">@color/colorWhite</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Blue theme -->
+
+    <style name="AppTheme.Blue">
+        <item name="themePrimary">@color/colorBlue</item>
+        <item name="themePrimaryDark">@color/colorBlueTop</item>
+        <item name="themeAccent">@color/colorBlue</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorBlue</item>
+        <item name="android:colorControlHighlight">@color/colorBlueTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Blue.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorBlue</item>
+        <item name="themePrimaryDark">@color/colorBlueTop</item>
+        <item name="themeAccent">@color/colorBlue</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorBlue</item>
+        <item name="android:colorControlHighlight">@color/colorBlueTop</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Blue theme ends -->
+
+    <!-- Indigo Theme -->
+
+    <style name="AppTheme.Indigo">
+        <item name="themePrimary">@color/colorIndigo</item>
+        <item name="themePrimaryDark">@color/colorIndigoTop</item>
+        <item name="themeAccent">@color/colorIndigo</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorIndigo</item>
+        <item name="android:colorControlHighlight">@color/colorIndigoTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Indigo.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorIndigo</item>
+        <item name="themePrimaryDark">@color/colorIndigoTop</item>
+        <item name="themeAccent">@color/colorIndigo</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorIndigo</item>
+        <item name="android:colorControlHighlight">@color/colorIndigoTop</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Indigo theme -->
+
+    <!-- Orange theme  -->
+
+
+    <style name="AppTheme.Orange">
+        <item name="themePrimary">@color/colorOrange</item>
+        <item name="themePrimaryDark">@color/colorOrangeTop</item>
+        <item name="themeAccent">@color/colorOrange</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorOrange</item>
+        <item name="android:colorControlHighlight">@color/colorOrangeTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Orange.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorOrange</item>
+        <item name="themePrimaryDark">@color/colorOrangeTop</item>
+        <item name="themeAccent">@color/colorOrange</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorOrange</item>
+        <item name="android:colorControlHighlight">@color/colorOrangeTop</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Orange theme ends here -->
+
+    <!-- Pink theme  -->
+
+
+    <style name="AppTheme.Pink">
+        <item name="themePrimary">@color/colorPink</item>
+        <item name="themePrimaryDark">@color/colorPinkTop</item>
+        <item name="themeAccent">@color/colorPink</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorPink</item>
+        <item name="android:colorControlHighlight">@color/colorPinkTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Pink.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorPink</item>
+        <item name="themePrimaryDark">@color/colorPinkTop</item>
+        <item name="themeAccent">@color/colorPink</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorPink</item>
+        <item name="android:colorControlHighlight">@color/colorPinkTop</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+    <!-- Pink theme ends here  -->
+
+    <!-- Gray theme  -->
+
+
+    <style name="AppTheme.Gray">
+        <item name="themePrimary">@color/colorGray</item>
+        <item name="themePrimaryDark">@color/colorGrayTop</item>
+        <item name="themeAccent">@color/colorGray</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorGray</item>
+        <item name="android:colorControlHighlight">@color/colorGrayTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Gray.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorGray</item>
+        <item name="themePrimaryDark">@color/colorGrayTop</item>
+        <item name="themeAccent">@color/colorGray</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorGray</item>
+        <item name="android:colorControlHighlight">@color/colorGrayTop</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Gray theme ends here -->
+
+    <!-- Yellow theme  -->
+
+
+    <style name="AppTheme.Yellow">
+        <item name="themePrimary">@color/colorYellow</item>
+        <item name="themePrimaryDark">@color/colorYellowTop</item>
+        <item name="themeAccent">@color/colorYellow</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorYellow</item>
+        <item name="android:colorControlHighlight">@color/colorYellowTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Yellow.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorYellow</item>
+        <item name="themePrimaryDark">@color/colorYellowTop</item>
+        <item name="themeAccent">@color/colorYellow</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorYellow</item>
+        <item name="android:colorControlHighlight">@color/colorYellowTop</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Yellow theme ends here -->
+
+    <!-- Brown theme  -->
+
+
+    <style name="AppTheme.Brown">
+        <item name="themePrimary">@color/colorBrown</item>
+        <item name="themePrimaryDark">@color/colorBrownTop</item>
+        <item name="themeAccent">@color/colorBrown</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorBrown</item>
+        <item name="android:colorControlHighlight">@color/colorBrownTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Brown.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorBrown</item>
+        <item name="themePrimaryDark">@color/colorBrownTop</item>
+        <item name="themeAccent">@color/colorBrown</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorBrown</item>
+        <item name="android:colorControlHighlight">@color/colorBrownTop</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Brown theme ends here -->
+
+    <!-- Lime theme  -->
+
+    <style name="AppTheme.Lime">
+        <item name="themePrimary">@color/colorLime</item>
+        <item name="themePrimaryDark">@color/colorLimeTop</item>
+        <item name="themeAccent">@color/colorLime</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorLime</item>
+        <item name="android:colorControlHighlight">@color/colorLimeTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Lime.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorLime</item>
+        <item name="themePrimaryDark">@color/colorLimeTop</item>
+        <item name="themeAccent">@color/colorLime</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorLime</item>
+        <item name="android:colorControlHighlight">@color/colorLimeTop</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Lime theme ends here -->
+
+    <!-- Cyan theme  -->
+
+
+    <style name="AppTheme.Cyan">
+        <item name="themePrimary">@color/colorCyan</item>
+        <item name="themePrimaryDark">@color/colorCyanTop</item>
+        <item name="themeAccent">@color/colorCyan</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorCyan</item>
+        <item name="android:colorControlHighlight">@color/colorCyanTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Cyan.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorCyan</item>
+        <item name="themePrimaryDark">@color/colorCyanTop</item>
+        <item name="themeAccent">@color/colorCyan</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorCyan</item>
+        <item name="android:colorControlHighlight">@color/colorCyanTop</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Cyan theme ends here -->
+
+    <!-- Purple theme -->
+
+
+    <style name="AppTheme.Purple">
+        <item name="themePrimary">@color/colorPurple</item>
+        <item name="themePrimaryDark">@color/colorPurpleTop</item>
+        <item name="themeAccent">@color/colorPurple</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorPurple</item>
+        <item name="android:colorControlHighlight">@color/colorPurpleTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Purple.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorPurple</item>
+        <item name="themePrimaryDark">@color/colorPurpleTop</item>
+        <item name="themeAccent">@color/colorPurple</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorPurple</item>
+        <item name="android:colorControlHighlight">@color/colorPurpleTop</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Purple theme ends here -->
+
+    <!-- Teal theme -->
+
+    <style name="AppTheme.Teal">
+        <item name="themePrimary">@color/colorTeal</item>
+        <item name="themePrimaryDark">@color/colorTealTop</item>
+        <item name="themeAccent">@color/colorTeal</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorTeal</item>
+        <item name="android:colorControlHighlight">@color/colorTealTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Teal.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorTeal</item>
+        <item name="themePrimaryDark">@color/colorTealTop</item>
+        <item name="themeAccent">@color/colorTeal</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorTeal</item>
+        <item name="android:colorControlHighlight">@color/colorTealTop</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Teal theme ends here -->
+
+    <!-- Green theme -->
+
+    <style name="AppTheme.Green">
+        <item name="themePrimary">@color/colorGreen</item>
+        <item name="themePrimaryDark">@color/colorGreenTop</item>
+        <item name="themeAccent">@color/colorGreen</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorGreen</item>
+        <item name="android:colorControlHighlight">@color/colorGreenTop</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Green.Dark" parent="AppTheme.Dark">
+        <item name="themePrimary">@color/colorGreen</item>
+        <item name="themePrimaryDark">@color/colorGreenTop</item>
+        <item name="themeAccent">@color/colorGreen</item>
+        <item name="themeContentBackground">@color/colorWhite</item>
+        <item name="themeContentTextColor">@color/colorWhite</item>
+        <item name="themeContentTextColoOnPrimary">@color/colorWhite</item>
+        <item name="android:colorButtonNormal">@color/colorGreen</item>
+        <item name="android:colorControlHighlight">@color/colorGreenTop</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Green theme ends here -->
+
+    <style name="Button.Styles" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:layout_marginLeft">@dimen/value_15dp</item>
+        <item name="android:textSize">@dimen/settings_text_default</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:paddingLeft">@dimen/value_20dp</item>
+        <item name="android:paddingRight">@dimen/value_20dp</item>
+    </style>
+
+    <style name="Passcode.Editext.Styles" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">@dimen/settings_text_default</item>
+        <item name="android:inputType">numberPassword</item>
+        <item name="android:backgroundTint">?themePrimary</item>
+        <item name="android:selectable">false</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Passcode.Lock.List.Row.Styles" parent="Theme.AppCompat">
+        <item name="android:textSize">@dimen/settings_text_default</item>
+        <item name="android:padding">@dimen/value_30dp</item>
+    </style>
 
     <!-- Recycler Row Font Styles -->
     <style name="NoteRowStyles">
@@ -35,33 +442,14 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="NoteRowStyles.Dark">
+        <item name="android:textSize">@dimen/row_note_text_size</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
     <style name="NoteTimeStampStyles">
         <item name="android:textSize">@dimen/row_note_time_size</item>
         <item name="android:textColor">@android:color/darker_gray</item>
     </style>
-
-    <!-- Toolbar styles -->
-    <style name="ToolBarStyles">
-        <item name="android:windowBackground">@color/colorPrimary</item>
-        <item name="android:textColor">@color/colorBg</item>
-    </style>
-
-    <!-- Toolbar Dark styles -->
-    <style name="ToolBarStyles.Dark">
-        <item name="android:windowBackground">@color/colorPrimaryModeDark</item>
-        <item name="android:textColor">@color/colorBg</item>
-    </style>
-
-    <!--&lt;!&ndash; Activity Light Background Styles &ndash;&gt;
-    <style name="ActivityBg.Light">
-        <item name="android:windowBackground">@color/colorPrimary</item>
-        <item name="android:textColor">@color/colorBg</item>
-    </style>
-
-    &lt;!&ndash; Activity Dark Background Styles &ndash;&gt;
-    <style name="ActivityBg.Dark">
-        <item name="android:windowBackground">@color/colorBgDark</item>
-        <item name="android:textColor">@color/colorTextDark</item>
-    </style>-->
 
 </resources>

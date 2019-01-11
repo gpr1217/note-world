@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/value_20dp">
+
+    <Switch
+        android:id="@+id/screen_mode_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_mode_light"
+        android:gravity="start"
+        android:checked="true"
+        android:switchMinWidth="50dp"
+        android:textSize="@dimen/settings_text_default"
+        android:layout_marginBottom="20dp"/>
+
+    <Switch
+        android:id="@+id/screen_mode_dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_mode_dark"
+        android:gravity="start"
+        android:checked="true"
+        android:switchMinWidth="50dp"
+        android:textSize="@dimen/settings_text_default"
+        android:layout_below="@+id/screen_mode_light"/>
+
+</LinearLayout>

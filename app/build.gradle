@@ -1,13 +1,17 @@
 apply plugin: 'com.android.application'
 
+//minSdkVersion(lowest possible) <= targetSdkVersion == compileSdkVersion (latest SDK)
+
 android {
     compileSdkVersion 27
+    //always compile with the latest SDK. You’ll get all the benefits of new compilation checks on existing code, avoid newly deprecated APIs, and be ready to use new APIs.
     defaultConfig {
         applicationId "apps.gpr.noteworld"
-        minSdkVersion 19
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 21
+        //minSdkVersion is the lower bound for your app. Uses to determine which of a user’s devices an app can be installed on.
+        targetSdkVersion 27 //provides forward compatibility
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -23,6 +27,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

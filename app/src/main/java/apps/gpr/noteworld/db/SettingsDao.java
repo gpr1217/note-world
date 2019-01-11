@@ -23,8 +23,11 @@ public interface SettingsDao {
     Settings getSettingsById(int settingsId);
 
     @Query("SELECT * FROM Settings ORDER BY created_date DESC")
-    List<Settings> getSettingsById();
+    List<Settings> getSettingsList();
 
     @Update
     void updateSettings(Settings settings);
+
+    @Query("UPDATE Settings SET passcode = :passcode, modified_date = :timeStamp WHERE id = :settingsId")
+    void updateSettingsByColumn(int settingsId,String passcode,String timeStamp);
 }

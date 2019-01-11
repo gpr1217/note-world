@@ -8,7 +8,7 @@ import apps.gpr.noteworld.db.NotesDatabase;
 /**
  * Singleton for Database abstract class, creates only one instance and can be used overall application
  */
-public class DatabaseManager {
+class DatabaseManager {
 
     private static final String DATABASE_NAME = "notes_db";
     private static NotesDatabase notesDatabase;

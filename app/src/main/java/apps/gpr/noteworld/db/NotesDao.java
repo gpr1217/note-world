@@ -24,7 +24,7 @@ public interface NotesDao {
     @Query("SELECT * FROM Notes WHERE id = :noteId")
     Notes getNoteById(int noteId);
 
-    @Query("SELECT * FROM Notes ORDER BY id DESC")
+    @Query("SELECT * FROM Notes WHERE status = 1 ORDER BY id DESC")
     List<Notes> getAllNotes();
 
     @Update

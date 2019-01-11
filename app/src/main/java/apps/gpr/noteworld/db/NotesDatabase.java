@@ -3,7 +3,6 @@ package apps.gpr.noteworld.db;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
-import apps.gpr.noteworld.core.DatabaseManager;
 import apps.gpr.noteworld.model.Notes;
 import apps.gpr.noteworld.model.Settings;
 
@@ -13,7 +12,7 @@ import apps.gpr.noteworld.model.Settings;
  *
  */
 
-@Database(entities = {Notes.class,Settings.class}, version = 3, exportSchema = false)
+@Database(entities = {Notes.class,Settings.class}, version = 4, exportSchema = false)
 public abstract class NotesDatabase extends RoomDatabase{
     public abstract NotesDao notesDao();
 

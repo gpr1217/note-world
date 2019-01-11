@@ -1,14 +1,17 @@
 package apps.gpr.noteworld.adapters;
 
+import android.content.ClipData;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,27 +21,28 @@ import apps.gpr.noteworld.R;
 import apps.gpr.noteworld.model.Notes;
 import apps.gpr.noteworld.utils.CommonUtilities;
 import apps.gpr.noteworld.utils.Const;
+import apps.gpr.noteworld.utils.PrefUtils;
+import apps.gpr.noteworld.views.NotesActivity;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NViewHolder> implements Filterable {
 
-    private Context _c;
     private List<Notes> noteList;
     private List<Notes> noteListFiltered;
     private NotesAdapterListener listener;
-
-    public NotesAdapter(List<Notes> notesList) {
-        this.noteList = notesList;
-    }
+    private Context _c;
 
     public class NViewHolder extends RecyclerView.ViewHolder {
-        public TextView note;
-        public TextView timestamp;
+        final TextView note;
+        final TextView timestamp;
+        public RelativeLayout viewForeground, viewBackground;
 
-        public NViewHolder(View itemView) {
+        NViewHolder(View itemView) {
             super(itemView);
 
             note = itemView.findViewById(R.id.note);
             timestamp = itemView.findViewById(R.id.timestamp);
+            viewBackground = itemView.findViewById(R.id.view_background);
+            viewForeground = itemView.findViewById(R.id.view_foreground);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -56,11 +60,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NViewHolder>
         this.noteListFiltered = notes;
     }
 
-    public void updateData(List<Notes> notes){
-        noteList = notes;
-        this.notifyDataSetChanged();
-    }
-
     @NonNull
     @Override
     public NViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -70,10 +69,14 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull NViewHolder holder, int position) {
+
         Notes note = noteListFiltered.get(position);
         holder.note.setText(note.getNote());
 
-        CommonUtilities.log("ModifiedDate",note.getModifiedTimeStamp());
+        if (PrefUtils.getModePreference(_c).equals(Const.SCREEN_DARK)){
+            holder.note.setTextColor(Color.WHITE);
+        }
+
         if (note.getModifiedTimeStamp() != null)
             holder.timestamp.setText(CommonUtilities.formatDate(note.getModifiedTimeStamp(), Const.FORMAT_LIST_ROW_DATE_TIME));
         else
@@ -110,11 +113,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NViewHolder>
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String charString = charSequence.toString();
-                CommonUtilities.log("SearchQuery::getFilter-charString",charString);
-
-                for (Notes n : noteListFiltered){
-                    CommonUtilities.log("Before-",n.getNote());
-                }
 
                 if (charString.isEmpty()){
                     noteListFiltered = noteList;
@@ -123,18 +121,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NViewHolder>
 
                     for (Notes n : noteList){
                         String note = n.getNote().toLowerCase();
-                        CommonUtilities.log("contains", String.valueOf(note.contains(charString.toLowerCase())));
                         if (n.getNote().toLowerCase().contains(charString.toLowerCase())){
                             filteredList.add(n);
                         }
                     }
-                    for (Notes n : filteredList){
-                        CommonUtilities.log("filteredList-",n.getNote());
-                    }
+
                     noteListFiltered = filteredList;
-                    for (Notes n : noteListFiltered){
-                        CommonUtilities.log("after-",n.getNote());
-                    }
                 }
 
                 FilterResults filterResults = new FilterResults();
@@ -144,6 +136,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NViewHolder>
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                //noinspection unchecked
                 noteListFiltered = (List<Notes>) filterResults.values;
                 notifyDataSetChanged();
             }
@@ -152,5 +145,20 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NViewHolder>
 
     public interface NotesAdapterListener{
         void onNoteSelected(Notes note);
+    }
+
+    Notes deleteItem;
+    public void removeItem(int position){
+        deleteItem = noteList.get(position);
+        noteList.remove(position);
+        notifyItemRemoved(position);
+
+        ((NotesActivity) _c).deleteNote(deleteItem);
+    }
+
+    public void restoreItem(Notes item, int position){
+        noteList.add(position, item);
+        notifyItemInserted(position);
+        ((NotesActivity) _c).updateNote(item);
     }
 }

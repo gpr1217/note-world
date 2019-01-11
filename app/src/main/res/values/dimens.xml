@@ -1,8 +1,8 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <!--<dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>-->
 
     <dimen name="welcome_text">24sp</dimen>
     <dimen name="get_started">18sp</dimen>
@@ -17,8 +17,47 @@
     <dimen name="row_note_text_size">20sp</dimen>
     <dimen name="row_note_time_size">14sp</dimen>
 
+    <dimen name="settings_colors_small">10sp</dimen>
+    <dimen name="settings_colors_normal">10sp</dimen>
+    <dimen name="settings_colors_large">16sp</dimen>
     <dimen name="settings_text_default">20sp</dimen>
     <dimen name="settings_text_large">24sp</dimen>
-    <dimen name="switch_width_default">50dp</dimen>
+
+    <dimen name="value_1dp">1dp</dimen>
+    <dimen name="value_2dp">2dp</dimen>
+    <dimen name="value_5dp">5dp</dimen>
+    <dimen name="value_8dp">8dp</dimen>
+    <dimen name="value_10dp">10dp</dimen>
+    <dimen name="value_15dp">15dp</dimen>
+    <dimen name="value_20dp">20dp</dimen>
+    <dimen name="value_25dp">25dp</dimen>
+    <dimen name="value_30dp">30dp</dimen>
+    <dimen name="value_35dp">35dp</dimen>
+    <dimen name="value_40dp">40dp</dimen>
+    <dimen name="value_45dp">45dp</dimen>
+    <dimen name="value_50dp">50dp</dimen>
+    <dimen name="value_55dp">55dp</dimen>
+    <dimen name="value_60dp">60dp</dimen>
+    <dimen name="value_65dp">65dp</dimen>
+    <dimen name="value_70dp">70dp</dimen>
+    <dimen name="value_75dp">75dp</dimen>
+    <dimen name="value_80dp">80dp</dimen>
+    <dimen name="value_85dp">85dp</dimen>
+    <dimen name="value_90dp">90dp</dimen>
+    <dimen name="value_95dp">95dp</dimen>
+    <dimen name="value_100dp">100dp</dimen>
+    <dimen name="value_110dp">110dp</dimen>
+    <dimen name="value_120dp">120dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+    <!--<dimen name="switch_width_default">50dp</dimen>
     <dimen name="switch_width_large">60dp</dimen>
+    <dimen name="text_margin">16dp</dimen>-->
+
+
+    <!-- Settings Radio Buttons -->
+    <!-- <dimen name="settings_radio_btn_padding_small">5dp</dimen>
+    <dimen name="settings_radio_btn_padding_large">10dp</dimen>-->
+
 </resources>

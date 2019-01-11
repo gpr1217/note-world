@@ -2,16 +2,19 @@ package apps.gpr.noteworld.model;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 @Entity
-public class Settings {
+public class Settings implements Parcelable{
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
     private int id;
 
     private String mode;
+    private String passcode;
     private String first_launch;
     private String last_login;
     private String view_type;
@@ -19,6 +22,17 @@ public class Settings {
     private String modified_date;
 
     public Settings() {
+    }
+
+    public Settings(Parcel readParcel) {
+        id = readParcel.readInt();
+        mode = readParcel.readString();
+        passcode = readParcel.readString();
+        first_launch = readParcel.readString();
+        last_login = readParcel.readString();
+        view_type = readParcel.readString();
+        created_date = readParcel.readString();
+        modified_date = readParcel.readString();
     }
 
     @NonNull
@@ -36,6 +50,14 @@ public class Settings {
 
     public void setMode(String mode) {
         this.mode = mode;
+    }
+
+    public String getPasscode() {
+        return passcode;
+    }
+
+    public void setPasscode(String passcode) {
+        this.passcode = passcode;
     }
 
     public String getFirst_launch() {
@@ -83,6 +105,7 @@ public class Settings {
         return "Settings{" +
                 "id=" + id +
                 ", mode='" + mode + '\'' +
+                ", passcode='" + passcode + '\'' +
                 ", first_launch='" + first_launch + '\'' +
                 ", last_login='" + last_login + '\'' +
                 ", view_type='" + view_type + '\'' +
@@ -90,4 +113,33 @@ public class Settings {
                 ", modified_date='" + modified_date + '\'' +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(mode);
+        parcel.writeString(passcode);
+        parcel.writeString(first_launch);
+        parcel.writeString(last_login);
+        parcel.writeString(view_type);
+        parcel.writeString(created_date);
+        parcel.writeString(modified_date);
+    }
+
+    public static final Parcelable.Creator<Settings> CREATOR = new Parcelable.Creator<Settings>(){
+        @Override
+        public Settings createFromParcel(Parcel parcel) {
+            return new Settings(parcel);
+        }
+
+        @Override
+        public Settings[] newArray(int i) {
+            return new Settings[i];
+        }
+    };
 }

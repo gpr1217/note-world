@@ -4,15 +4,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
-public class DialogsManager {
+class DialogsManager {
 
-    static Context _context;
-    static AlertDialog.Builder builder;
-    public DialogsManager(Context c) {
-        this._context = c;
+    private static AlertDialog.Builder builder;
+    public DialogsManager() {
+
     }
 
-    public static void openSimpleAlertDialog(String title){
+    public static void openSimpleAlertDialog(String title, Context _context){
         builder = new AlertDialog.Builder(_context);
         builder.setTitle(title);
         builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
@@ -27,7 +26,4 @@ public class DialogsManager {
         builder.show();
     }
 
-    public static void openYesNoAlertDialog(String title){
-
-    }
 }

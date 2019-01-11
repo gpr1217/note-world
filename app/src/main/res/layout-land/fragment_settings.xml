@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/colors_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="?themePrimary"
+        android:dividerHeight="1dp"
+        android:scrollbars="vertical" />
+
+    <RelativeLayout
+        android:id="@+id/add_email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/value_10dp">
+
+        <TextView
+            android:id="@+id/email_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/settings_text_default"
+            android:text="@string/add_email_text"
+            android:padding="@dimen/value_10dp"/>
+
+        <EditText
+            android:id="@+id/add_email_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="?themePrimary"
+            android:layout_below="@id/email_note"
+            android:padding="@dimen/value_10dp"
+            android:hint="@string/example_email_text" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:text="@string/str_save"
+            android:layout_marginTop="@dimen/value_10dp"
+            style="@style/Button.Styles"
+            android:layout_below="@+id/add_email_edittext"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

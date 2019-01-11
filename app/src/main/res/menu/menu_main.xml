@@ -12,16 +12,23 @@
         app:actionViewClass="android.support.v7.widget.SearchView"/>
 
     <item
-        android:id="@+id/action_save"
-        android:title="Save"
+        android:id="@+id/action_speak"
+        android:title="@string/str_speak"
         app:showAsAction="ifRoom"
         android:visible="false"
-        android:icon="@drawable/baseline_done_white_36dp"
+        android:icon="@drawable/outline_mic_white_24"
+        />
+
+    <item
+        android:id="@+id/action_save"
+        android:title="@string/str_save"
+        app:showAsAction="ifRoom"
+        android:visible="false"
         />
 
     <item
         android:id="@+id/action_empty"
-        android:title="Options"
+        android:title="@string/str_options"
         android:orderInCategory="101"
         app:showAsAction="always"
         android:icon="@drawable/baseline_more_vert_white_36dp">
@@ -29,12 +36,12 @@
             <item android:id="@+id/action_settings"
                 android:icon="@android:drawable/ic_menu_preferences"
                 app:showAsAction="ifRoom"
-                android:title="Settings" />
+                android:title="@string/str_settings" />
 
             <item android:id="@+id/action_about"
                 android:icon="@android:drawable/ic_menu_help"
                 app:showAsAction="ifRoom"
-                android:title="About" />
+                android:title="@string/str_about" />
         </menu>
     </item>
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.fragments.ScreenShotsFragment"
+    android:orientation="vertical"
+    >
+
+        <!-- it draws data from listadapter and reuses and recycles -->
+    <TextView
+        android:id="@+id/theme_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_light_theme_screens"
+        android:textSize="@dimen/settings_text_default"
+        android:layout_marginBottom="@dimen/value_10dp"
+        android:padding="@dimen/value_5dp"/>
+
+    <GridView
+        android:id="@+id/screen_shots_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="3"
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp"
+        android:stretchMode="columnWidth"
+        />
+
+</LinearLayout>
