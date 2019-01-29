@@ -13,43 +13,45 @@
         android:layout_gravity="center|center_vertical"
         android:gravity="center|center_vertical"
         android:visibility="visible">
+
         <ImageView
             android:id="@+id/launching_icon"
-            android:layout_width="@dimen/value_60dp"
-            android:layout_height="@dimen/value_100dp"
+            android:layout_width="@dimen/value_80dp"
+            android:layout_height="@dimen/value_110dp"
             android:layout_centerHorizontal="true"
-            android:gravity="center|center_vertical"
-            android:src="@drawable/ic_launcher_for_white_round"
+            android:layout_marginBottom="@dimen/value_5dp"
             android:contentDescription="launching_icon"
-            android:layout_marginBottom="@dimen/value_10dp"/>
+            android:gravity="center|center_vertical"
+            android:src="@drawable/ic_launcher_for_white_round" />
 
         <TextView
             android:id="@+id/welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/welcome_txt"
-            android:textSize="@dimen/welcome_text"
+            android:layout_below="@+id/launching_icon"
             android:layout_centerHorizontal="true"
             android:gravity="center|center_vertical"
+            android:text="@string/welcome_txt"
             android:textColor="?themeContentTextColor"
-            android:layout_below="@+id/launching_icon"/>
+            android:textSize="@dimen/welcome_text"
+            android:layout_marginBottom="@dimen/value_10dp"/>
 
         <Button
             android:id="@+id/btn_get_started"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/value_60dp"
-            android:text="@string/get_started"
-            android:textSize="@dimen/get_started"
-            android:layout_centerHorizontal="true"
+            android:layout_height="@dimen/value_50dp"
             android:layout_below="@+id/welcome"
-            android:textColor="?themePrimary"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/gradient_button"
-            android:visibility="visible"
-            android:paddingBottom="@dimen/value_5dp"
-            android:paddingTop="@dimen/value_5dp"
+            android:paddingBottom="@dimen/value_2dp"
             android:paddingLeft="@dimen/value_20dp"
             android:paddingRight="@dimen/value_20dp"
-            android:shadowRadius="5"/>
+            android:paddingTop="@dimen/value_2dp"
+            android:shadowRadius="5"
+            android:text="@string/get_started"
+            android:textColor="?themePrimary"
+            android:textSize="@dimen/get_started"
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/loading"

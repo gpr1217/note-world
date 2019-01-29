@@ -78,6 +78,10 @@ public class PrefUtils {
         editor.commit();
     }
 
+    public static String getStringPreference(String key, Context c){
+        return c.getSharedPreferences(nwPreferences,Context.MODE_PRIVATE).getString(key,"");
+    }
+
     public static void setModePreference(String value, Context c){
         SharedPreferences pref = c.getSharedPreferences(nwPreferences,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();

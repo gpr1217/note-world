@@ -49,6 +49,8 @@ public class ColorsAdapter extends ArrayAdapter<Colors> {
         final TextView txt_color = view.findViewById(R.id.txt_color);
         txt_color.setText(colors.getColor());
 
+        savedTheme = PrefUtils.getStringPreference(PrefUtils.KEY_THEME_COLOR,_context);
+
         if (savedTheme.equals(colors.getColor()) && colors.getColor().equals(_context.getResources().getString(R.string.color_black))){
             view.setBackgroundResource(colors.getColorResId());
             txt_color.setTextColor(_context.getResources().getColor(R.color.colorWhite));

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.EditNoteActivity">
+    tools:context=".views.EditNoteActivity"
+    android:fitsSystemWindows="true">
 
     <include
         android:id="@+id/toolbar"
@@ -25,6 +26,85 @@
         android:padding="@dimen/padding_edittext"
         android:layout_below="@+id/toolbar"
         />
+
+    <LinearLayout
+        android:id="@+id/hidden_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="?themePrimary"
+        android:visibility="gone">
+
+        <!--<ImageView
+            android:id="@+id/option_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+
+        <ImageView
+            android:id="@+id/option_insert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+-->
+        <ImageView
+            android:id="@+id/option_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:src="@drawable/outline_format_bold_white_24"
+
+            />
+
+        <ImageView
+            android:id="@+id/option_italic"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:src="@drawable/outline_format_italic_white_24"
+            />
+
+        <ImageView
+            android:id="@+id/option_underline"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:src="@drawable/outline_format_underlined_white_24"
+            />
+
+        <ImageView
+            android:id="@+id/option_checkbox"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:src="@drawable/outline_check_box_white_24"
+            />
+
+        <ImageView
+            android:id="@+id/option_number_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:src="@drawable/outline_format_list_numbered_white_24"
+            />
+
+    </LinearLayout>
+
 
 
 </RelativeLayout>

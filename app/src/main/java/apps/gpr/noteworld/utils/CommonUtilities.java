@@ -37,6 +37,8 @@ public class CommonUtilities {
     }
     public static String folder = "NWdata";
 
+    public static final String MSG_INVALID = "Invalid Email Address";
+    public static final String MSG_VALID = "Valid EmailID";
 
     public static String getCurrentDate(){
         Date rightNow = Calendar.getInstance().getTime();
@@ -269,8 +271,10 @@ public class CommonUtilities {
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                return null;
             } catch (IOException e) {
                 e.printStackTrace();
+                return null;
             }
         }
 
@@ -286,6 +290,21 @@ public class CommonUtilities {
         }
 
         return file.delete();
+    }
+
+    public static String verifyEmailAddress(String emailId){
+        if (!emailId.contains("@")){
+            return MSG_INVALID;
+        }else {
+            String[] splitEmail = emailId.split("@");
+            if (splitEmail.length > 1) {
+                String afterAt = splitEmail[1];
+                if (!afterAt.contains(".")) {
+                    return MSG_INVALID;
+                }
+            }
+        }
+        return MSG_VALID;
     }
 
     /*private String createFileInInternalStorage(Notes selectedItem){

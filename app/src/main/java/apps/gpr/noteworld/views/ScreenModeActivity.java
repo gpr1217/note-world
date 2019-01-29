@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.view.CollapsibleActionView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
@@ -115,9 +116,39 @@ public class ScreenModeActivity extends BaseActivity{
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+        super.onBackPressed();
 
+        modeListFragment = (ModeListFragment) getSupportFragmentManager().findFragmentByTag("ModeList");
+        colorFragment = (ThemeColorFragment) getSupportFragmentManager().findFragmentByTag("ThemeColor");
+
+        if (modeListFragment != null && colorFragment != null) {
+            if (modeListFragment.isVisible()) {
+                getSupportFragmentManager().beginTransaction().remove(modeListFragment);
+            }
+
+            if (colorFragment.isVisible()) {
+                getSupportFragmentManager().beginTransaction().remove(colorFragment);
+            }
+            backToSettings();
+        }else if (modeListFragment != null){
+            if (modeListFragment.isVisible()) {
+                getSupportFragmentManager().beginTransaction().remove(modeListFragment);
+            }
+            backToSettings();
+
+        }else if (colorFragment != null){
+            if (colorFragment.isVisible()) {
+                getSupportFragmentManager().beginTransaction().remove(colorFragment);
+            }
+            backToSettings();
+        } else{
+            backToSettings();
+        }
+    }
+
+    private void backToSettings() {
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }

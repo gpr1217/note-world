@@ -37,8 +37,6 @@ import apps.gpr.noteworld.utils.Const;
 import apps.gpr.noteworld.utils.PrefUtils;
 import apps.gpr.noteworld.utils.RecyclerTouchListener;
 import apps.gpr.noteworld.views.fragments.PasscodeLockFragment;
-import apps.gpr.noteworld.views.fragments.SettingsFragment;
-import apps.gpr.noteworld.views.fragments.ThemeColorFragment;
 
 public class SettingsActivity extends BaseActivity implements SettingsAdapter.SettingsAdapterListener{
 
@@ -222,12 +220,14 @@ public class SettingsActivity extends BaseActivity implements SettingsAdapter.Se
 
     private void backToSettings(){
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
 
     private void backToNotes(){
         Intent intent = new Intent(getApplicationContext(), NotesActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
@@ -249,8 +249,6 @@ public class SettingsActivity extends BaseActivity implements SettingsAdapter.Se
         super.onStop();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(dbReceiver);
     }
-
-
 
     public void insertPassCode(String pass_code){
         try{
@@ -365,15 +363,26 @@ public class SettingsActivity extends BaseActivity implements SettingsAdapter.Se
             btn_save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (!add_email_edittext.getText().equals("")){
-                        prefUtils.savePreference("email_id",add_email_edittext.getText().toString());
-                        add_email_edittext.setText("");
-                        add_email_edittext.setHint(getResources().getString(R.string.example_email_text));
 
-                        Toast.makeText(getContext(), "Email Id saved", Toast.LENGTH_LONG).show();
-                        Intent in = new Intent(getContext(), SettingsActivity.class);
-                        startActivity(in);
-                        getActivity().finish();
+                    String addEmail = add_email_edittext.getText().toString();
+
+                    if (!addEmail.equals("")){
+
+                        if (CommonUtilities.verifyEmailAddress(addEmail).equals(CommonUtilities.MSG_INVALID)){
+                            add_email_edittext.setError(CommonUtilities.MSG_INVALID);
+                        }
+                        else {
+                            prefUtils.savePreference("email_id", add_email_edittext.getText().toString());
+                            add_email_edittext.setText("");
+                            add_email_edittext.setHint(getResources().getString(R.string.example_email_text));
+
+                            Toast.makeText(getContext(), "Email Id saved", Toast.LENGTH_LONG).show();
+                            Intent in = new Intent(getContext(), SettingsActivity.class);
+                            startActivity(in);
+                            getActivity().finish();
+                        }
+                    }else {
+                        add_email_edittext.setError(CommonUtilities.MSG_INVALID);
                     }
                 }
             });

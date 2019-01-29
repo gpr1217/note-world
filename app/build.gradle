@@ -10,8 +10,8 @@ android {
         minSdkVersion 21
         //minSdkVersion is the lower bound for your app. Uses to determine which of a user’s devices an app can be installed on.
         targetSdkVersion 27 //provides forward compatibility
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

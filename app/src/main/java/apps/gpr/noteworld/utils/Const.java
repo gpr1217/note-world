@@ -58,4 +58,9 @@ public class Const {
     public static final String ACTION_NEW_NOTE = "new note";
     public static final String ACTION_EDIT_NOTE = "edit note";
 
+    public static final String OPTION_BOLD = "bold";
+    public static final String OPTION_ITALIC = "italic";
+    public static final String OPTION_UNDERLINE = "underline";
+    public static final String OPTION_CHECKBOX = "checkbox";
+    public static final String OPTION_NUMBERED = "numbered";
 }

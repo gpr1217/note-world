@@ -15,7 +15,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -34,10 +36,12 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,6 +63,10 @@ import apps.gpr.noteworld.utils.Const;
 import apps.gpr.noteworld.utils.PrefUtils;
 import apps.gpr.noteworld.utils.RecyclerTouchListener;
 
+import static android.support.v4.content.FileProvider.getUriForFile;
+import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_SWIPE;
+import static android.support.v7.widget.helper.ItemTouchHelper.RIGHT;
+
 public class NotesActivity extends BaseActivity implements NotesAdapter.NotesAdapterListener{
 
     private RecyclerView recyclerView;
@@ -67,6 +75,7 @@ public class NotesActivity extends BaseActivity implements NotesAdapter.NotesAda
     private Notes notes = new Notes();
     private MenuItem action_search;
     private boolean isSearch = false;
+    private boolean swipeBack = false;
 
     private static String EMAIL_FILE = "file";
     private static String EMAIL_FILE_TO_ME = "file to me";
@@ -137,7 +146,7 @@ public class NotesActivity extends BaseActivity implements NotesAdapter.NotesAda
             }
         }));
 
-        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 return true;
@@ -146,12 +155,13 @@ public class NotesActivity extends BaseActivity implements NotesAdapter.NotesAda
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 if (viewHolder instanceof NotesAdapter.NViewHolder){
+
                     final Notes deletedItem = notesList.get(viewHolder.getAdapterPosition());
                     final int deletedIndex = viewHolder.getAdapterPosition();
 
-                    adapter.removeItem(viewHolder.getAdapterPosition());
+                    adapter.removeItem(deletedIndex);
 
-                    Snackbar snackbar = Snackbar.make(relativeLayout, "Note Removed from list",Snackbar.LENGTH_LONG);
+                    Snackbar snackbar = Snackbar.make(relativeLayout, "Note Removed from list", Snackbar.LENGTH_LONG);
                     snackbar.setAction("UNDO", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -159,6 +169,7 @@ public class NotesActivity extends BaseActivity implements NotesAdapter.NotesAda
                         }
                     });
                     snackbar.show();
+
                 }
             }
 
@@ -175,6 +186,12 @@ public class NotesActivity extends BaseActivity implements NotesAdapter.NotesAda
                 final View backgroundView = ((NotesAdapter.NViewHolder) viewHolder).viewBackground;
                 backgroundView.setVisibility(View.VISIBLE);
 
+                /*if (actionState == ACTION_STATE_SWIPE) {
+                    *//*backgroundView.setVisibility(View.GONE);
+                    foregroundView.setVisibility(View.VISIBLE);*//*
+                    setTouchListener(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+                }*/
+
                 getDefaultUIUtil().onDraw(c, recyclerView, foregroundView, dX, dY, actionState, isCurrentlyActive);
             }
 
@@ -189,6 +206,10 @@ public class NotesActivity extends BaseActivity implements NotesAdapter.NotesAda
 
             @Override
             public int convertToAbsoluteDirection(int flags, int layoutDirection) {
+                /*if (swipeBack) {
+                    swipeBack = false;
+                    return 0;
+                }*/
                 return super.convertToAbsoluteDirection(flags, layoutDirection);
             }
 
@@ -262,21 +283,39 @@ public class NotesActivity extends BaseActivity implements NotesAdapter.NotesAda
         }
     }
 
+    Handler handler = new Handler();
     private final DialogInterface.OnClickListener actionListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialogInterface, int which) {
             switch (which){
                 case 0:
                     checkStoragePermissions();
-                    sendNoteToEmail(EMAIL_TEXT);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            sendNoteToEmail(EMAIL_TEXT);
+                        }
+                    },1500);
+
                     break;
                 case 1:
                     checkStoragePermissions();
-                    sendNoteToEmail(EMAIL_FILE);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            sendNoteToEmail(EMAIL_FILE);
+                        }
+                    },1500);
                     break;
                 case 2:
                     checkStoragePermissions();
-                    sendNoteToEmail(EMAIL_FILE_TO_ME);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            sendNoteToEmail(EMAIL_FILE_TO_ME);
+                        }
+                    },1500);
+
                     break;
                 default:
                     break;
@@ -287,56 +326,83 @@ public class NotesActivity extends BaseActivity implements NotesAdapter.NotesAda
     String filename;
     private void sendNoteToEmail(String type){
 
-        if (selectedItem != null){
+        try {
+            if (selectedItem != null) {
 
-            filename = "note_"+selectedItem.getId()+".txt";
-            String note = selectedItem.getNote();
+                filename = "note_" + selectedItem.getId() + ".txt";
+                String note = selectedItem.getNote();
 
-            Intent email = new Intent(Intent.ACTION_SEND);
-            email.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            email.setType("text/plain");
-            email.putExtra(Intent.EXTRA_SUBJECT, "From NoteWorld");
+                Intent email = new Intent(Intent.ACTION_SEND);
+                email.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                email.setType("text/plain");
+                email.putExtra(Intent.EXTRA_SUBJECT, "From NoteWorld");
 
-            if (type.equals(EMAIL_FILE)) {
-                email.putExtra(Intent.EXTRA_TEXT, "File Attached");
+                if (type.equals(EMAIL_FILE)) {
+                    email.putExtra(Intent.EXTRA_TEXT, "File Attached");
 
-                Uri uri = FileProvider.getUriForFile(this,
-                        getApplicationContext().getPackageName()
-                                + ".provider", CommonUtilities.getAttachment(note, filename));
+                    Uri uri = null;
+                    if (CommonUtilities.getAttachment(note, filename) != null) {
+                        uri = FileProvider.getUriForFile(this,
+                                getApplicationContext().getPackageName()
+                                        + ".provider", CommonUtilities.getAttachment(note, filename));
 
-                if (uri != null) {
-                    email.putExtra(Intent.EXTRA_STREAM, uri);
+                    }
+                    if (uri != null) {
+                        email.putExtra(Intent.EXTRA_STREAM, uri);
+                    }
+                } else if (type.equals(EMAIL_FILE_TO_ME)) {
+                    email.putExtra(Intent.EXTRA_EMAIL, new String[]{email_id});
+                    email.putExtra(Intent.EXTRA_TEXT, "File Attached");
+
+                    Uri uri = FileProvider.getUriForFile(this,
+                            getApplicationContext().getPackageName()
+                                    + ".provider", CommonUtilities.getAttachment(note, filename));
+
+                    if (uri != null) {
+                        email.putExtra(Intent.EXTRA_STREAM, uri);
+                    }
+                } else {
+                    email.putExtra(Intent.EXTRA_TEXT, note);
                 }
-            }
-            else if (type.equals(EMAIL_FILE_TO_ME)) {
-                email.putExtra(Intent.EXTRA_EMAIL,new String[]{email_id});
-                email.putExtra(Intent.EXTRA_TEXT, "File Attached");
 
-                Uri uri = FileProvider.getUriForFile(this,
-                        getApplicationContext().getPackageName()
-                                + ".provider", CommonUtilities.getAttachment(note, filename));
-
-                if (uri != null) {
-                    email.putExtra(Intent.EXTRA_STREAM, uri);
-                }
+                startActivityForResult(Intent.createChooser(email, "Choose one"), 11);
             }
-            else{
-                email.putExtra(Intent.EXTRA_TEXT, note);
-            }
-
-            startActivityForResult(Intent.createChooser(email, "Choose one"), 11);
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Sorry! Something went wrong, please try again later or use Text option", Toast.LENGTH_LONG).show();
         }
     }
 
     private void checkStoragePermissions(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission_group.STORAGE) != PackageManager.PERMISSION_GRANTED){
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission_group.STORAGE)){
-                Toast.makeText(this, "To Send this note as file NoteWorld app needs to access device storage", Toast.LENGTH_LONG).show();
+        try {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission_group.STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission_group.STORAGE)) {
+                        Toast.makeText(this, "To Send this note as file NoteWorld app needs to access device storage", Toast.LENGTH_LONG).show();
+                    } else {
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission_group.STORAGE}, 22);
+                    }
+                } else {
+                    CommonUtilities.log("Permissions already granted");
+                }
             }else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission_group.STORAGE}, 22);
+
+                int write = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                int read = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+
+                if (write != PackageManager.PERMISSION_GRANTED && read != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                        Toast.makeText(this, "To Send this note as file NoteWorld app needs to access device storage", Toast.LENGTH_LONG).show();
+                    } else {
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 22);
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 22);
+                    }
+                } else {
+                    CommonUtilities.log("Permissions already granted");
+                }
             }
-        }else {
-            Toast.makeText(this, "Permissions already granted", Toast.LENGTH_LONG).show();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -480,11 +546,13 @@ public class NotesActivity extends BaseActivity implements NotesAdapter.NotesAda
         switch (item.getItemId()){
             case R.id.action_settings:
                 Intent intent = new Intent(getApplicationContext(),SettingsActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
                 return true;
             case R.id.action_about:
                 Intent about = new Intent(getApplicationContext(),AboutActivity.class);
+                about.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(about);
                 return true;
             default:
@@ -505,6 +573,7 @@ public class NotesActivity extends BaseActivity implements NotesAdapter.NotesAda
 
     @Override
     public void onBackPressed() {
+        //super.onBackPressed();
         finish();
     }
 }

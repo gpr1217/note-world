@@ -56,7 +56,7 @@
             android:layout_toLeftOf="@+id/delete"
             android:layout_marginRight="@dimen/value_10dp"
             android:text="DELETE"
-            style="@style/NoteTimeStampStyles"
+            android:textColor="@color/colorWhite"
             />
 
     </RelativeLayout>

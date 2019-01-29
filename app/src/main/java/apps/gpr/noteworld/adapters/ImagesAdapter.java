@@ -85,7 +85,7 @@ public class ImagesAdapter extends BaseAdapter {
         }
 
         if (mode.equals(Const.SCREEN_DARK)) {
-            screenShotIds = new Integer[]{R.raw.dark_notes_list_indigo, R.raw.dark_add_note_indigo, R.raw.dark_theme_color_indigo,
+            /*screenShotIds = new Integer[]{R.raw.dark_notes_list_indigo, R.raw.dark_add_note_indigo, R.raw.dark_theme_color_indigo,
                     R.raw.dark_notes_list_cyan, R.raw.dark_notes_list_lime, R.raw.dark_notes_list_purple,
                     R.raw.dark_notes_ist_teal, R.raw.dark_notes_list_black, R.raw.dark_notes_list_brown};
 
@@ -97,10 +97,10 @@ public class ImagesAdapter extends BaseAdapter {
             screenShots.put(R.raw.dark_notes_list_purple,context.getResources().getString(R.string.str_Dark_mode_Purple_color));
             screenShots.put(R.raw.dark_notes_ist_teal,context.getResources().getString(R.string.str_Dark_mode_Teal_color));
             screenShots.put(R.raw.dark_notes_list_black,context.getResources().getString(R.string.str_Dark_mode_Black_color));
-            screenShots.put(R.raw.dark_notes_list_brown,context.getResources().getString(R.string.str_Dark_mode_Brown_color));
+            screenShots.put(R.raw.dark_notes_list_brown,context.getResources().getString(R.string.str_Dark_mode_Brown_color));*/
         }
         else{
-            screenShotIds = new Integer[]{R.raw.light_notes_blue, R.raw.light_notes_cyan, R.raw.light_add_note_cyan,
+           /* screenShotIds = new Integer[]{R.raw.light_notes_blue, R.raw.light_notes_cyan, R.raw.light_add_note_cyan,
                     R.raw.light_settings_pink, R.raw.light_notes_pink, R.raw.light_themecolor_purple,
                     R.raw.light_notes_purple, R.raw.light_notes_green, R.raw.light_notes_black};
 
@@ -112,7 +112,7 @@ public class ImagesAdapter extends BaseAdapter {
             screenShots.put(R.raw.light_themecolor_purple,context.getResources().getString(R.string.str_Light_mode_Purple_color));
             screenShots.put(R.raw.light_notes_purple,context.getResources().getString(R.string.str_Light_mode_Purple_color));
             screenShots.put(R.raw.light_notes_green,context.getResources().getString(R.string.str_Light_mode_Green_color));
-            screenShots.put(R.raw.light_notes_black,context.getResources().getString(R.string.str_Light_mode_Black_color));
+            screenShots.put(R.raw.light_notes_black,context.getResources().getString(R.string.str_Light_mode_Black_color));*/
         }
     }
 }

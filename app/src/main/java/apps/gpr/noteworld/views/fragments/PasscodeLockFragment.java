@@ -13,6 +13,7 @@ import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,7 @@ public class PasscodeLockFragment extends Fragment {
     PrefUtils prefUtils;
     String action = "";
 
-    RelativeLayout passcode_lock_layout;
+    View passcode_lock_layout;
 
     int TIME_MILLIS_500 = 500;
     int TIME_MILLIS_1000 = 1000;
@@ -104,8 +105,11 @@ public class PasscodeLockFragment extends Fragment {
 
                 // Initialize a TextView for ListView each Item
                 TextView tv = view.findViewById(android.R.id.text1);
-
+                CommonUtilities.log("lock_settings_list",tv.getText().toString());
                 boolean status = prefUtils.getBooleanPreference(PrefUtils.KEY_PASS_CODE_STATUS);
+                CommonUtilities.log("lock_settings_list status", String.valueOf(status));
+
+                CommonUtilities.log("lock_settings_list adapter pos",adapterView.getItemAtPosition(i).toString());
                 if (tv.getText().equals(Const.SET_PASSCODE) || adapterView.getItemAtPosition(i).equals(Const.SET_PASSCODE)){
                     if (status) {
                         lock_settings_list.setVisibility(View.GONE);
@@ -117,7 +121,7 @@ public class PasscodeLockFragment extends Fragment {
                     }
                 }
 
-                else if (tv.getText().equals(Const.ENABLE_PASSCODE) || adapterView.getItemAtPosition(i).equals(Const.ENABLE_PASSCODE)){
+                else if (tv.getText().equals(Const.ENABLE_PASSCODE) && adapterView.getItemAtPosition(i).equals(Const.ENABLE_PASSCODE)){
                     Toast.makeText(getContext(), "Passcode Lock is Enabled",Toast.LENGTH_LONG).show();
 
                     prefUtils.savePreference(PrefUtils.KEY_PASS_CODE_STATUS,true);
@@ -129,7 +133,21 @@ public class PasscodeLockFragment extends Fragment {
                     passcode_lock_layout.setVisibility(View.GONE);
                 }
 
-                else if (tv.getText().equals(Const.DISABLE_PASSCODE) || adapterView.getItemAtPosition(i).equals(Const.DISABLE_PASSCODE)){
+                else if (tv.getText().equals(Const.DISABLE_PASSCODE) && adapterView.getItemAtPosition(i).equals(Const.ENABLE_PASSCODE)){
+                    Toast.makeText(getContext(), "Passcode Lock is Disabled",Toast.LENGTH_LONG).show();
+
+                    prefUtils.savePreference(PrefUtils.KEY_PASS_CODE_STATUS,false);
+
+                    tv.setText(Const.ENABLE_PASSCODE);
+
+                    lock_settings_list.setVisibility(View.VISIBLE);
+                    passcode_title.setVisibility(View.GONE);
+                    passcode_lock_layout.setVisibility(View.GONE);
+                }
+
+                else if (tv.getText().equals(Const.DISABLE_PASSCODE) || adapterView.getItemAtPosition(i).equals(Const.DISABLE_PASSCODE)
+                        && status){
+
                     Toast.makeText(getContext(), "Passcode Lock is Disabled",Toast.LENGTH_LONG).show();
 
                     prefUtils.savePreference(PrefUtils.KEY_PASS_CODE_STATUS,false);
@@ -196,7 +214,12 @@ public class PasscodeLockFragment extends Fragment {
                 else if (num_1.getText().toString().length() == 1 && action.equals(Const.PASSCODE_CHANGE) && !isReEnterCode && isReReEnterCode) {
                     input_pass_code = num_1.getText().toString();
                 }
-                num_2.requestFocus();
+
+                if (num_1.getText().length() == 1) {
+                    num_2.requestFocus();
+                }else {
+                    num_1.requestFocus();
+                }
             }
 
             @Override
@@ -228,7 +251,11 @@ public class PasscodeLockFragment extends Fragment {
                     input_pass_code = input_pass_code + "" + num_2.getText().toString();
                 }
 
-                num_3.requestFocus();
+                if (num_2.getText().length() == 1) {
+                    num_3.requestFocus();
+                }else {
+                    num_2.requestFocus();
+                }
             }
 
             @Override
@@ -261,7 +288,11 @@ public class PasscodeLockFragment extends Fragment {
                     input_pass_code = input_pass_code + "" + num_3.getText().toString();
                 }
 
-                num_4.requestFocus();
+                if (num_3.getText().length() == 1) {
+                    num_4.requestFocus();
+                }else {
+                    num_3.requestFocus();
+                }
             }
 
             @Override
@@ -368,6 +399,65 @@ public class PasscodeLockFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
+            }
+        });
+
+        num_1.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+
+                if (keyCode == KeyEvent.KEYCODE_DEL){
+                    num_1.requestFocus();
+                }
+
+                return false;
+            }
+        });
+
+        num_2.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+                if (keyCode == KeyEvent.KEYCODE_DEL && num_2.getText().length() == 1){
+                    num_2.requestFocus();
+                }
+
+                if (keyCode == KeyEvent.KEYCODE_DEL && num_2.getText().length() == 0){
+                    num_1.requestFocus();
+                }
+
+                return false;
+            }
+        });
+
+        num_3.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+
+                if (keyCode == KeyEvent.KEYCODE_DEL && num_3.getText().length() == 1){
+                    num_3.requestFocus();
+                }
+
+                if (keyCode == KeyEvent.KEYCODE_DEL && num_3.getText().length() == 0){
+                    num_2.requestFocus();
+                }
+
+                return false;
+            }
+        });
+
+        num_4.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+
+                if (keyCode == KeyEvent.KEYCODE_DEL && num_4.getText().length() == 1){
+                    num_4.requestFocus();
+                }
+
+                if (keyCode == KeyEvent.KEYCODE_DEL && num_4.getText().length() == 0){
+                    num_3.requestFocus();
+                }
+
+                return false;
             }
         });
 
